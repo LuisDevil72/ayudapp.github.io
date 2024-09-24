@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyudApp</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">AyudApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <!-- Primeros Auxilios -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Primeros Auxilios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adviceModal" onclick="showAdvice('RCP')">Reanimación Cardiopulmonar (RCP)</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adviceModal" onclick="showAdvice('Asfixia')">Asfixia</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adviceModal" onclick="showAdvice('Heridas')">Heridas</a>
+                    </div>
+                </li>
+                <!-- Quemaduras -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Quemaduras
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adviceModal" onclick="showAdvice('Quemaduras leves')">Quemaduras leves</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adviceModal" onclick="showAdvice('Quemaduras graves')">Quemaduras graves</a>
+                    </div>
+                </li>
+                <!-- Intoxicaciones -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Intoxicaciones
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adviceModal" onclick="showAdvice('Intoxicación por alimentos')">Intoxicación por alimentos</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adviceModal" onclick="showAdvice('Intoxicación por inhalación')">Intoxicación por inhalación</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 text-center text-white">
+        <h1 class="display-4 font-weight-bold">AyudApp</h1>
+        <h3 class="my-4">Tus recomendaciones médicas a un clic</h3>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="adviceModal" tabindex="-1" role="dialog" aria-labelledby="adviceModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adviceModalLabel">Consejo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="adviceContent">
+                    <!-- Aquí se insertará el consejo -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript para mostrar los consejos -->
+    <script>
+        function showAdvice(option) {
+            const adviceContent = {
+                'RCP': 'Realiza compresiones torácicas con una frecuencia de 100 a 120 por minuto...',
+                'Asfixia': 'Si la persona no puede respirar, realiza la maniobra de Heimlich...',
+                'Heridas': 'Limpia la herida con agua y jabón, y cubre con un apósito limpio...',
+                'Quemaduras leves': 'Enfría la quemadura bajo agua corriente durante 10 minutos...',
+                'Quemaduras graves': 'No intentes retirar ropa pegada a la piel y busca atención médica...',
+                'Intoxicación por alimentos': 'Induce el vómito solo si es indicado por un médico...',
+                'Intoxicación por inhalación': 'Lleva a la persona al aire fresco inmediatamente y busca atención médica...'
+            };
+
+            document.getElementById('adviceContent').textContent = adviceContent[option];
+            document.getElementById('adviceModalLabel').textContent = option;
+        }
+    </script>
+
+</body>
+</html>
